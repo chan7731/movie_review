@@ -1,5 +1,6 @@
 package com.chan7731.movie_review.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -15,9 +16,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Review {
-    private Long id;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String reviewer;
 
     @Min(1)
@@ -26,4 +28,10 @@ public class Review {
 
     @Column(columnDefinition = "TEXT")
     private String comment;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "movie_id", nullable = false)
+    @JsonBackReference
+    private Movie movie;
 }
+
