@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 public class MovieService {
     private final MovieRepository movieRepository;
 
-    public Page<Movie> gatAll(Pageable pageable) {
+    public Page<Movie> getAll(Pageable pageable) {
         return movieRepository.findAll(pageable);
     }
 
@@ -40,6 +40,5 @@ public class MovieService {
 
     public void delete(Long id) {
         movieRepository.deleteById(id);
-
     }
 }

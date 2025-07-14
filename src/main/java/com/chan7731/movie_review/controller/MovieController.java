@@ -26,7 +26,7 @@ public class MovieController {
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
 
-        return movieService.gatAll(pageable);
+        return movieService.getAll(pageable);
     }
 
     @GetMapping("/{id}")
